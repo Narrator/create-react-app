@@ -2,7 +2,7 @@
 customHeaders:
   - pattern: '*.json'
     headers:
-      - key: 'fromCustomHttp'
+      - key: 'fromCustomHttp1'
         value: 'true'
   - pattern: '*.json'
     headers:
