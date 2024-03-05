@@ -1,0 +1,20 @@
+---
+customHeaders:
+  - pattern: '*.json'
+    headers:
+      - key: 'fromCustomHttp'
+        value: 'true'
+  - pattern: '*.json'
+    headers:
+      - key: 'Content-Type'
+        value: 'json'
+      - key: 'Cache-Control'
+        value: 'max-age=50'
+  - pattern: '/img/*'
+    headers:
+      - key: 'Cache-Control'
+        value: 'max-age=50000'
+  - pattern: '/img/*.jpg'
+    headers:
+      - key: 'Content-Type'
+        value: 'jpg'
