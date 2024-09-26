@@ -5,6 +5,16 @@ import { finished } from "stream/promises";
 
 const cache = async () => {
   const globs = ["./node_modules/**/*"];
+
+  // If they are caching node modules, omit the .cache folder
+  const omitNodeModulesCacheGlob = "!node_modules/.cache";
+  if (
+    globs.some((e) => e.includes("node_modules")) &&
+    !globs.includes(omitNodeModulesCacheGlob)
+  ) {
+    globs.push(omitNodeModulesCacheGlob);
+  }
+
   const root = "/home/ANT.AMAZON.COM/kgnanask/sandbox/create-react-app";
   const cacheFileName = "cache.tar";
   const cacheArchiveWriteStream = createWriteStream(`${root}/${cacheFileName}`);
@@ -44,16 +54,6 @@ const cache = async () => {
   console.log("# Creating cache artifact...");
 
   for await (const path of globStream) {
-    const stats = statSync(`${root}/${path}`);
-
-    console.log(`Adding resource to cache archive`, {
-      path,
-      isSymbolicLink: stats.isSymbolicLink(),
-      isDirectory: stats.isDirectory(),
-      isFile: stats.isFile(),
-      size: stats.size,
-    });
-
     tarArchiver.file(`${root}/${path}`, {
       name: path.toString(),
       // stats,
