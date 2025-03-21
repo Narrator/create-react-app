@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React | UPDATE
+          Learn React | UPDATE @ 2022-10-20 3:15pm | 2
         </a>
       </header>
     </div>
